@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Protect .svn folders
+    RewriteRule ^(.*/)?\.svn/.* /404
+
+    # Protect /tinymvc
+    RewriteRule ^(.*/)?tinymvc/.* /404
+
+    # Protect /config.php
+    RewriteRule ^(.*/)?config.php /404
+
+    # Protect /cache
+    RewriteRule ^(.*/)?cache/.* /404
+
+    # Pretty URLs
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
